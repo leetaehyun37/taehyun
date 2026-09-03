@@ -3,119 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이태현 | QA 포트폴리오</title>
+    <title>이태현 | Game QA Portfolio</title>
     <style>
-        /* 폰트 설정 */
+        /* 폰트 및 리셋 */
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
         
-        /* 전체 배경 및 리셋 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Pretendard', sans-serif;
-            line-height: 1.6;
-            color: #2d3748;
-            background-color: #f7fafc; /* 부드러운 배경색 */
+            background-color: #0f172a; /* 고급스러운 다크 네이비 */
+            color: #cbd5e1;
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
-        /* 상단 헤더 (그라데이션 효과) */
-        header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            letter-spacing: -0.05em;
-        }
-        .quote {
-            font-size: 1.3rem;
-            color: #e2e8f0;
-            max-width: 600px;
-            margin: 0 auto 20px;
-            font-weight: 400;
-            word-break: keep-all;
-        }
-        .contact {
-            display: inline-block;
-            background: rgba(255,255,255,0.1);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 1rem;
-            backdrop-filter: blur(5px);
-        }
-
-        /* 본문 영역 */
+        /* 레이아웃 컨테이너 */
         .container {
-            max-width: 850px;
-            margin: -40px auto 50px;
-            padding: 0 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
         }
 
-        /* 섹션 공통 */
+        /* 헤더 (프로필) */
+        header {
+            text-align: center;
+            margin-bottom: 70px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #f8fafc;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+        }
+
+        .role-title {
+            color: #38bdf8; /* 포인트 컬러 (스카이블루) */
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+        }
+
+        .quote {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 25px;
+            word-break: keep-all;
+            padding: 20px;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 12px;
+            border: 1px solid #1e293b;
+        }
+
+        .contact-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #1e293b;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            border: 1px solid #334155;
+        }
+
+        /* 섹션 공통 스타일 */
         section {
-            background: white;
-            border-radius: 16px;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
         }
-        h2 {
-            font-size: 1.5rem;
-            color: #1a202c;
-            border-left: 4px solid #3182ce;
-            padding-left: 12px;
-            margin-bottom: 30px;
-        }
+        
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.4s; }
+        section:nth-child(4) { animation-delay: 0.6s; }
 
-        /* 학력 스타일 */
-        .education {
-            font-size: 1.1rem;
-            color: #4a5568;
+        h2 {
+            font-size: 1.8rem;
+            color: #f8fafc;
+            margin-bottom: 30px;
             display: flex;
             align-items: center;
+            gap: 10px;
         }
-        .education strong {
-            color: #2d3748;
-            margin-right: 15px;
+
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, #334155, transparent);
+            margin-left: 15px;
+        }
+
+        /* 타임라인 (학력 및 경력) */
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 25px;
+            border-left: 2px solid #334155;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #38bdf8;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: #38bdf8;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content h3 {
+            color: #f1f5f9;
+            font-size: 1.2rem;
+            margin-bottom: 3px;
+        }
+
+        .timeline-content p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        /* 빈 상태(Empty State)용 스타일 */
+        .empty-state {
+            padding: 20px;
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px dashed #475569;
+            border-radius: 8px;
+            color: #64748b;
+            text-align: center;
+            font-style: italic;
         }
 
         /* 프로젝트 카드 */
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
         .project-card {
-            border: 1px solid #edf2f7;
-            border-radius: 12px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 16px;
             padding: 30px;
-            margin-bottom: 25px;
-            background: #ffffff;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
-        /* 카드 호버(마우스 오버) 애니메이션 */
+
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-            border-color: #cbd5e0;
+            border-color: #38bdf8;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
-        /* 카드 왼쪽 장식 선 */
+
         .project-card::before {
             content: '';
             position: absolute;
-            left: 0;
             top: 0;
-            bottom: 0;
-            width: 4px;
-            background: #3182ce;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
+
         .project-card:hover::before {
             opacity: 1;
         }
@@ -123,142 +196,195 @@
         .project-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            flex-wrap: wrap;
-            gap: 10px;
+            align-items: flex-start;
+            margin-bottom: 15px;
         }
-        .project-card h3 {
-            font-size: 1.4rem;
-            color: #1a202c;
+
+        .project-title h3 {
+            font-size: 1.5rem;
+            color: #f8fafc;
+            margin-bottom: 5px;
         }
-        .date {
-            font-size: 0.9rem;
-            color: #718096;
-            background: #edf2f7;
+
+        .project-date {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            background: #0f172a;
             padding: 4px 10px;
             border-radius: 6px;
+            border: 1px solid #334155;
         }
-        
-        /* 뱃지(태그) 스타일 */
-        .badges {
-            margin-bottom: 20px;
+
+        .project-tags {
             display: flex;
-            gap: 8px;
             flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
         }
-        .badge {
-            padding: 5px 12px;
+
+        .tag {
+            padding: 4px 12px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
         }
-        .badge-role { background-color: #ebf8ff; color: #2b6cb0; }
-        .badge-tech { background-color: #f0fff4; color: #2f855a; }
 
-        /* 성과 리스트 */
-        ul {
-            list-style-type: none;
+        .tag-role { background: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.2); }
+        .tag-tech { background: rgba(129, 140, 248, 0.1); color: #818cf8; border: 1px solid rgba(129, 140, 248, 0.2); }
+
+        .project-details ul {
+            list-style: none;
         }
-        li {
+
+        .project-details li {
             position: relative;
             padding-left: 20px;
             margin-bottom: 12px;
-            color: #4a5568;
-        }
-        li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #3182ce;
-            font-weight: bold;
-        }
-        .highlight {
-            background-color: #fefcbf;
-            color: #b7791f;
-            padding: 0 6px;
-            font-weight: 700;
-            border-radius: 4px;
+            font-size: 0.95rem;
         }
 
-        /* 반응형 (모바일 최적화) */
+        .project-details li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #38bdf8;
+            font-weight: bold;
+        }
+
+        .highlight {
+            color: #fef08a;
+            font-weight: 600;
+        }
+
+        /* 애니메이션 키프레임 */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 반응형 */
         @media (max-width: 600px) {
-            header { padding: 50px 20px; }
-            h1 { font-size: 2.2rem; }
-            .container { margin-top: -20px; }
-            section { padding: 25px; }
-            .project-header { flex-direction: column; align-items: flex-start; }
+            h1 { font-size: 2.5rem; }
+            .project-header { flex-direction: column; gap: 10px; }
+            .container { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>이태현</h1>
-        <div class="quote">
-            "안정적인 서비스 환경을 구축하여 게임에 대한 유저의 신뢰를 지키는 QA"
-        </div>
-        <div class="contact">
-            📧 dlxogus3914@naver.com
-        </div>
-    </header>
-
     <div class="container">
+        <!-- 프로필 헤더 -->
+        <header>
+            <h1>이태현</h1>
+            <div class="role-title">Game QA & Developer</div>
+            <div class="quote">
+                "안정적인 서비스 환경을 구축하여 게임에 대한 유저의 신뢰를 지키는 QA"
+            </div>
+            <div class="contact-info">
+                ✉️ dlxogus3914@naver.com
+            </div>
+        </header>
+
+        <!-- 학력 -->
         <section>
             <h2>🎓 학력</h2>
-            <div class="education">
-                <strong>유한대학교 게임콘텐츠학과</strong> 
-                <span>2022.03 ~ 2027.03</span>
+            <div class="timeline-item">
+                <div class="timeline-date">2022.03 ~ 2027.03</div>
+                <div class="timeline-content">
+                    <h3>유한대학교</h3>
+                    <p>게임콘텐츠학과</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2019.03 ~ 2022.01</div>
+                <div class="timeline-content">
+                    <h3>장곡고등학교</h3>
+                    <p>인문계</p>
+                </div>
             </div>
         </section>
 
+        <!-- 경력 -->
+        <section>
+            <h2>💼 경력</h2>
+            <!-- 경력이 없을 때 보여줄 디자인 -->
+            <div class="empty-state">
+                현재 새로운 도전을 위한 첫 커리어를 준비하고 있습니다.
+            </div>
+        </section>
+
+        <!-- 프로젝트 -->
         <section>
             <h2>🚀 프로젝트 경험</h2>
+            
+            <div class="project-grid">
+                
+                <!-- QUDRANT -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">
+                            <h3>QUDRANT</h3>
+                        </div>
+                        <div class="project-date">2026.03 ~ 2026.07</div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag tag-role">기능 개발 및 QA (4인 팀)</span>
+                        <span class="tag tag-tech">Unity</span>
+                        <span class="tag tag-tech">GitHub</span>
+                    </div>
+                    <div class="project-details">
+                        <ul>
+                            <li>상점 UI 구현 및 재화 결제 시 발생할 수 있는 예외 상황 사전 테스트 진행</li>
+                            <li>몬스터 패턴 및 기믹 구현을 통한 전투 시스템 로직 검증</li>
+                        </ul>
+                    </div>
+                </div>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>QUDRANT</h3>
-                    <span class="date">2026.03 ~ 2026.07</span>
+                <!-- Target Color -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">
+                            <h3>Target Color (보드게임)</h3>
+                        </div>
+                        <div class="project-date">2025.08 ~ 2025.12</div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag tag-role">기획 및 QA</span>
+                        <span class="tag tag-tech">보드 게임</span>
+                    </div>
+                    <div class="project-details">
+                        <ul>
+                            <li>전략에 유리하게 작용하는 밸런스 붕괴 요소를 파악하고, 컴포넌트(카드/점수) 비율을 조정하여 모든 유저가 공정하게 즐길 수 있도록 밸런스 개선</li>
+                            <li>룰북 리뷰를 통한 규칙의 논리적 오류 탐색 및 유저의 변칙적인 플레이 시나리오(Edge Case) 도출</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="badges">
-                    <span class="badge badge-role">기능 개발 / QA (4인 팀)</span>
-                    <span class="badge badge-tech">Unity, GitHub</span>
-                </div>
-                <ul>
-                    <li>상점 UI 구현 및 재화 결제 시 발생할 수 있는 예외 상황 사전 테스트 진행</li>
-                    <li>몬스터 패턴 및 기믹 구현을 통한 전투 시스템 로직 검증</li>
-                </ul>
-            </div>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>Target Color (보드게임)</h3>
-                    <span class="date">2025.08 ~ 2025.12</span>
+                <!-- 음주 측정앱 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">
+                            <h3>모바일 음주 측정앱</h3>
+                        </div>
+                        <div class="project-date">2025.08 ~ 2025.12</div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag tag-role">기획 및 UI 개발</span>
+                        <span class="tag tag-tech">Figma</span>
+                    </div>
+                    <div class="project-details">
+                        <ul>
+                            <li>피그마 프로토타입을 활용하여 타겟 유저(20대 대학생) 대상 사용성 테스트 진행 및 피드백 수집</li>
+                            <li>'주량 입력 - 시간 입력 - 결과 확인'으로 이어지는 핵심 플로우에서 유저가 헷갈려하는 UI 요소를 파악</li>
+                            <li>화면 전환 단계를 <span class="highlight">3단계에서 2단계로</span> 축소하여 직관적인 조작이 가능하도록 UX 개선안 도출</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="badges">
-                    <span class="badge badge-role">기획 / QA</span>
-                    <span class="badge badge-tech">보드게임 룰 디자인</span>
-                </div>
-                <ul>
-                    <li>전략에 유리하게 작용하는 밸런스 붕괴 요소를 파악하고, 컴포넌트(카드/점수) 비율을 조정하여 모든 유저가 공정하게 즐길 수 있도록 밸런스 개선</li>
-                    <li>룰북 리뷰를 통한 규칙의 논리적 오류 탐색 및 유저의 변칙적인 플레이 시나리오(Edge Case) 도출</li>
-                </ul>
-            </div>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>모바일 음주 측정앱</h3>
-                    <span class="date">2025.08 ~ 2025.12</span>
-                </div>
-                <div class="badges">
-                    <span class="badge badge-role">기획 / UI 개발</span>
-                    <span class="badge badge-tech">Figma</span>
-                </div>
-                <ul>
-                    <li>Figma 프로토타입을 활용하여 타겟 유저(20대 대학생) 대상 사용성 테스트 진행 및 피드백 수집</li>
-                    <li>'주량 입력 - 시간 입력 - 결과 확인'으로 이어지는 핵심 플로우에서 유저가 헷갈려하는 UI 요소를 파악</li>
-                    <li>화면 전환 단계를 <span class="highlight">3단계에서 2단계로</span> 축소하여 직관적인 조작이 가능하도록 UX 개선안 도출</li>
-                </ul>
             </div>
         </section>
     </div>
