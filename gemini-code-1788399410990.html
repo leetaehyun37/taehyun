@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이태현 | QA 포트폴리오</title>
+    <style>
+        /* 폰트 및 기본 설정 */
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        body {
+            font-family: 'Pretendard', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #fff;
+        }
+
+        /* 헤더 (이름 및 한 줄 소개) */
+        header {
+            margin-bottom: 50px;
+        }
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -0.05em;
+        }
+        .quote {
+            font-size: 1.2rem;
+            color: #495057;
+            background-color: #f8f9fa;
+            padding: 15px 20px;
+            border-left: 5px solid #3b82f6;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        .contact {
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+
+        /* 섹션 공통 */
+        section {
+            margin-bottom: 50px;
+        }
+        h2 {
+            font-size: 1.5rem;
+            color: #212529;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        /* 텍스트 리스트 */
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+            color: #495057;
+        }
+
+        /* 프로젝트 카드 */
+        .project-card {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+        }
+        .project-card h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 1.3rem;
+            color: #1a1a1a;
+        }
+        .project-meta {
+            font-size: 0.9rem;
+            color: #868e96;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+        }
+        .project-meta span {
+            display: inline-flex;
+            align-items: center;
+        }
+        .badge {
+            background-color: #e6f2ff;
+            color: #0066cc;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        .highlight {
+            background-color: #ffe066;
+            padding: 0 4px;
+            font-weight: bold;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>이태현</h1>
+        <div class="quote">
+            "안정적인 서비스 환경을 구축하여 게임에 대한 유저의 신뢰를 지키는 QA"
+        </div>
+        <div class="contact">
+            ✉️ Email: dlxogus3914@naver.com
+        </div>
+    </header>
+
+    <section>
+        <h2>학력</h2>
+        <ul>
+            <li><strong>유한대학교 게임콘텐츠학과</strong> (2022.03 ~ 2027.03)</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>프로젝트 경험</h2>
+
+        <!-- QUDRANT -->
+        <div class="project-card">
+            <h3>QUDRANT</h3>
+            <div class="project-meta">
+                <span>📅 2026.03 ~ 2026.07</span>
+                <span>⚙️ Unity, GitHub</span>
+            </div>
+            <span class="badge">기능 개발 / QA (4인 팀)</span>
+            <ul>
+                <li>상점 UI 구현 및 재화 결제 시 발생할 수 있는 예외 상황 사전 테스트 진행</li>
+                <li>몬스터 패턴 및 기믹 구현을 통한 전투 시스템 로직 검증</li>
+            </ul>
+        </div>
+
+        <!-- Target Color -->
+        <div class="project-card">
+            <h3>Target Color (보드게임)</h3>
+            <div class="project-meta">
+                <span>📅 2025.08 ~ 2025.12</span>
+                <span>⚙️ 보드게임 룰 디자인</span>
+            </div>
+            <span class="badge">기획 / QA</span>
+            <ul>
+                <li>전략에 유리하게 작용하는 밸런스 붕괴 요소를 파악하고, 컴포넌트(카드/점수) 비율을 조정하여 모든 유저가 공정하게 즐길 수 있도록 밸런스 개선</li>
+                <li>룰북 리뷰를 통한 규칙의 논리적 오류 탐색 및 유저의 변칙적인 플레이 시나리오(Edge Case) 도출</li>
+            </ul>
+        </div>
+
+        <!-- 모바일 음주 측정앱 -->
+        <div class="project-card">
+            <h3>모바일 음주 측정앱</h3>
+            <div class="project-meta">
+                <span>📅 2025.08 ~ 2025.12</span>
+                <span>⚙️ Figma</span>
+            </div>
+            <span class="badge">기획 / UI 개발</span>
+            <ul>
+                <li>Figma 프로토타입을 활용하여 타겟 유저(20대 대학생) 대상 사용성 테스트 진행 및 피드백 수집</li>
+                <li>'주량 입력 - 시간 입력 - 결과 확인'으로 이어지는 핵심 플로우에서 유저가 헷갈려하는 UI 요소를 파악</li>
+                <li>화면 전환 단계를 <span class="highlight">O단계에서 O단계로</span> 축소하여 직관적인 조작이 가능하도록 UX 개선안 도출</li>
+            </ul>
+        </div>
+    </section>
+
+</body>
+</html>
