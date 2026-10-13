@@ -1,304 +1,717 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="게임 QA 이태현의 포트폴리오">
-<title>이태현 포트폴리오</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
-<style>
-:root {
-  --bg: #fbfbfa;
-  --fg: #1c1d1f;
-  --muted: #6b6e73;
-  --line: #e4e4e2;
-  --accent: #2f5bd3;
-  --chip: #f0f1f3;
-  --sans: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #141517; --fg: #e8e8e6; --muted: #9a9ca1; --line: #2a2b2e; --accent: #8aa8ff; --chip: #1f2023;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #141517; --fg: #e8e8e6; --muted: #9a9ca1; --line: #2a2b2e; --accent: #8aa8ff; --chip: #1f2023;
-  color-scheme: dark;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이태현 | Game QA Portfolio</title>
+    <style>
+        /* 폰트 및 리셋 */
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--fg);
-  font-family: var(--sans);
-  font-size: 15px;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  word-break: keep-all;
-}
-.wrap {
-  max-width: 720px;
-  margin: 0 auto;
-  padding-inline: 24px;
-  padding-block: 88px 64px;
-}
+        /* 색상 토큰: 기본(라이트) */
+        :root {
+            --bg: #ffffff;
+            --surface: #f8fafc;
+            --card: #ffffff;
+            --border: #e2e8f0;
+            --border-strong: #cbd5e1;
+            --text: #334155;
+            --heading: #0f172a;
+            --muted: #64748b;
+            --subtle: #94a3b8;
+            --accent: #0284c7;
+            --accent-2: #4f46e5;
+            --accent-soft: rgba(2, 132, 199, 0.08);
+            --accent-2-soft: rgba(79, 70, 229, 0.08);
+            --highlight: #b45309;
+            --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+            color-scheme: light;
+        }
 
-header { display: grid; gap: 20px; padding-bottom: 48px; border-bottom: 1px solid var(--line); }
-.role { font-family: var(--mono); font-size: 13px; color: var(--muted); letter-spacing: .02em; }
-h1 { margin: 0; font-size: 32px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; }
-.intro { margin: 0; font-size: 17px; max-width: 34em; text-wrap: balance; }
-.contact { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; font-size: 14px; }
-.contact a { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--line); }
-.contact a:hover { border-color: var(--fg); }
-.copy {
-  font: 500 12px var(--mono); color: var(--muted);
-  background: none; border: 1px solid var(--line); border-radius: 4px;
-  padding: 2px 8px; cursor: pointer;
-}
-.copy:hover { color: var(--fg); border-color: var(--muted); }
-.copy:focus-visible, .contact a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        /* 다크 모드 */
+        :root[data-theme="dark"] {
+            --bg: #0f172a;
+            --surface: rgba(30, 41, 59, 0.5);
+            --card: #1e293b;
+            --border: #334155;
+            --border-strong: #475569;
+            --text: #cbd5e1;
+            --heading: #f8fafc;
+            --muted: #94a3b8;
+            --subtle: #64748b;
+            --accent: #38bdf8;
+            --accent-2: #818cf8;
+            --accent-soft: rgba(56, 189, 248, 0.1);
+            --accent-2-soft: rgba(129, 140, 248, 0.1);
+            --highlight: #fef08a;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            color-scheme: dark;
+        }
 
-section { padding-top: 56px; }
-h2 {
-  margin: 0 0 24px;
-  font: 500 12px var(--mono);
-  text-transform: uppercase; letter-spacing: .12em;
-  color: var(--muted);
-}
-.row {
-  display: grid;
-  grid-template-columns: 148px 1fr;
-  gap: 4px 24px;
-  padding-block: 20px;
-  border-top: 1px solid var(--line);
-}
-.row:first-of-type { border-top: 0; padding-top: 0; }
-.date { font: 400 13px/1.9 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
-.body { min-width: 0; }
-h3 { margin: 0; font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
-.sub { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
-.meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-.meta span {
-  font: 400 12px var(--mono); color: var(--muted);
-  background: var(--chip); border-radius: 3px; padding: 1px 7px;
-}
-ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
-li { position: relative; padding-left: 16px; }
-li::before { content: ""; position: absolute; left: 0; top: .8em; width: 6px; height: 1px; background: var(--muted); }
-em { font-style: normal; font-family: var(--mono); font-size: .9em; color: var(--accent); }
-.note { margin: 0; color: var(--muted); }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.lead { margin: 14px 0 0; }
-h4 { margin: 32px 0 10px; font-size: 15px; font-weight: 600; }
-figure { margin: 18px 0 0; }
-figure img { display: block; width: 100%; border-radius: 4px; border: 1px solid var(--line); }
-figcaption { margin-top: 6px; font: 400 12px var(--mono); color: var(--muted); }
-.table { overflow-x: auto; margin-top: 4px; }
-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-th, td { text-align: left; vertical-align: top; padding: 8px 12px 8px 0; border-bottom: 1px solid var(--line); }
-th { font: 500 12px var(--mono); color: var(--muted); letter-spacing: .04em; }
-td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.sources { margin-top: 10px; gap: 4px; font-size: 13px; }
-.sources a { color: var(--muted); }
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-footer { margin-top: 72px; padding-top: 20px; border-top: 1px solid var(--line); font: 400 12px var(--mono); color: var(--muted); }
+        /* 테마 전환 버튼 */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: border-color 0.2s ease, color 0.2s ease;
+        }
 
-@media (max-width: 560px) {
-  .wrap { padding-block: 56px 48px; padding-inline: 20px; }
-  h1 { font-size: 28px; }
-  .row { grid-template-columns: 1fr; }
-}
-</style>
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .theme-toggle:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* 레이아웃 컨테이너 */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* 헤더 (프로필) */
+        header {
+            text-align: center;
+            margin-bottom: 70px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--heading);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+        }
+
+        .role-title {
+            color: var(--accent);
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+        }
+
+        .quote {
+            font-size: 1.25rem;
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 25px;
+            word-break: keep-all;
+            padding: 20px;
+            background: var(--surface);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .contact-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--card);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        /* 섹션 공통 스타일 */
+        section {
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.4s; }
+        section:nth-child(4) { animation-delay: 0.6s; }
+        section:nth-child(5) { animation-delay: 0.8s; }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--heading);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, var(--border), transparent);
+            margin-left: 15px;
+        }
+
+        /* 타임라인 (학력 및 경력) */
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 25px;
+            border-left: 2px solid var(--border);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content h3 {
+            color: var(--heading);
+            font-size: 1.2rem;
+            margin-bottom: 3px;
+        }
+
+        .timeline-content p {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        /* 빈 상태(Empty State)용 스타일 */
+        .empty-state {
+            padding: 20px;
+            background: var(--surface);
+            border: 1px dashed var(--border-strong);
+            border-radius: 8px;
+            color: var(--muted);
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* 프로젝트 카드 */
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .project-title h3 {
+            font-size: 1.5rem;
+            color: var(--heading);
+            margin-bottom: 5px;
+        }
+
+        .project-date {
+            font-size: 0.85rem;
+            color: var(--muted);
+            background: var(--surface);
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .tag-role { background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent-soft); }
+        .tag-tech { background: var(--accent-2-soft); color: var(--accent-2); border: 1px solid var(--accent-2-soft); }
+
+        .project-details ul {
+            list-style: none;
+        }
+
+        .project-details li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .project-details li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .project-details strong {
+            color: var(--heading);
+        }
+
+        .highlight {
+            color: var(--highlight);
+            font-weight: 600;
+        }
+
+        /* 분석 섹션 */
+        .analysis-lead {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            word-break: keep-all;
+        }
+
+        .analysis-block {
+            margin-top: 28px;
+        }
+
+        .analysis-block h4 {
+            color: var(--heading);
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+        }
+
+        .analysis-figure {
+            margin-top: 20px;
+        }
+
+        .analysis-figure img {
+            display: block;
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .analysis-figure figcaption {
+            margin-top: 8px;
+            font-size: 0.8rem;
+            color: var(--subtle);
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+        .analysis-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .analysis-table th,
+        .analysis-table td {
+            text-align: left;
+            vertical-align: top;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            word-break: keep-all;
+        }
+
+        .analysis-table th {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.85rem;
+            background: var(--surface);
+        }
+
+        .analysis-table td:first-child {
+            color: var(--heading);
+            white-space: nowrap;
+        }
+
+        .sources a {
+            color: var(--muted);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .sources a:hover {
+            color: var(--accent);
+        }
+
+        /* 애니메이션 키프레임 */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            header, section { animation: none; opacity: 1; }
+            .project-card:hover { transform: none; }
+        }
+
+        /* 반응형 */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .project-header { flex-direction: column; gap: 10px; }
+            .container { padding: 70px 20px 40px; }
+            .theme-toggle { top: 14px; right: 14px; }
+        }
+    </style>
+    <script>
+        // 화면이 그려지기 전에 저장된 테마를 적용해 깜빡임 방지
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            } catch (e) {}
+        })();
+    </script>
 </head>
 <body>
 
-<div class="wrap">
-  <header>
-    <div class="role">Game QA · Developer</div>
-    <h1>이태현</h1>
-    <p class="intro">안정적인 서비스 환경을 만들어, 게임에 대한 유저의 신뢰를 지키는 QA를 목표로 합니다.</p>
-    <div class="contact">
-      <a href="mailto:dlxogus3914@naver.com" id="email">dlxogus3914@naver.com</a>
-      <button class="copy" id="copy-email" type="button">복사</button>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="다크 모드로 전환">🌙 다크 모드</button>
+
+    <div class="container">
+        <!-- 프로필 헤더 -->
+        <header>
+            <h1>이태현</h1>
+            <div class="role-title">Game QA & Developer</div>
+            <div class="quote">
+                "안정적인 서비스 환경을 구축하여 게임에 대한 유저의 신뢰를 지키는 QA"
+            </div>
+            <div class="contact-info">
+                ✉️ dlxogus3914@naver.com
+            </div>
+        </header>
+
+        <!-- 학력 -->
+        <section>
+            <h2>🎓 학력</h2>
+            <div class="timeline-item">
+                <div class="timeline-date">2022.03 ~ 2027.03</div>
+                <div class="timeline-content">
+                    <h3>유한대학교</h3>
+                    <p>게임콘텐츠학과</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2019.03 ~ 2022.01</div>
+                <div class="timeline-content">
+                    <h3>장곡고등학교</h3>
+                    <p>인문계</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 경력 -->
+        <section>
+            <h2>💼 경력</h2>
+            <!-- 경력이 없을 때 보여줄 디자인 -->
+            <div class="empty-state">
+                현재 새로운 도전을 위한 첫 커리어를 준비하고 있습니다.
+            </div>
+        </section>
+
+        <!-- 프로젝트 -->
+        <section>
+            <h2>🚀 프로젝트 경험</h2>
+            
+            <div class="project-grid">
+                
+                <!-- QUDRANT -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">
+                            <h3>QUDRANT</h3>
+                        </div>
+                        <div class="project-date">2026.03 ~ 2026.07</div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag tag-role">기능 개발 및 QA (4인 팀)</span>
+                        <span class="tag tag-tech">Unity</span>
+                        <span class="tag tag-tech">GitHub</span>
+                    </div>
+                    <div class="project-details">
+                        <ul>
+                            <li>상점 UI 구현 및 재화 결제 시 발생할 수 있는 예외 상황 사전 테스트 진행</li>
+                            <li>몬스터 패턴 및 기믹 구현을 통한 전투 시스템 로직 검증</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Target Color -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">
+                            <h3>Target Color (보드게임)</h3>
+                        </div>
+                        <div class="project-date">2025.08 ~ 2025.12</div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag tag-role">기획 및 QA</span>
+                        <span class="tag tag-tech">보드 게임</span>
+                    </div>
+                    <div class="project-details">
+                        <ul>
+                            <li>전략에 유리하게 작용하는 밸런스 붕괴 요소를 파악하고, 컴포넌트(카드/점수) 비율을 조정하여 모든 유저가 공정하게 즐길 수 있도록 밸런스 개선</li>
+                            <li>룰북 리뷰를 통한 규칙의 논리적 오류 탐색 및 유저의 변칙적인 플레이 시나리오(Edge Case) 도출</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 음주 측정앱 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">
+                            <h3>모바일 음주 측정앱</h3>
+                        </div>
+                        <div class="project-date">2025.08 ~ 2025.12</div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag tag-role">기획 및 UI 개발</span>
+                        <span class="tag tag-tech">Figma</span>
+                    </div>
+                    <div class="project-details">
+                        <ul>
+                            <li>피그마 프로토타입을 활용하여 타겟 유저(20대 대학생) 대상 사용성 테스트 진행 및 피드백 수집</li>
+                            <li>'주량 입력 - 시간 입력 - 결과 확인'으로 이어지는 핵심 플로우에서 유저가 헷갈려하는 UI 요소를 파악</li>
+                            <li>화면 전환 단계를 <span class="highlight">3단계에서 2단계로</span> 축소하여 직관적인 조작이 가능하도록 UX 개선안 도출</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 분석 -->
+        <section>
+            <h2>📊 분석</h2>
+
+            <div class="project-grid">
+
+                <!-- 트릭컬 리바이브 3주년 이벤트 분석 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">
+                            <h3>트릭컬 리바이브 3주년 이벤트 분석</h3>
+                        </div>
+                        <div class="project-date">2026.10</div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag tag-role">라이브 서비스 이벤트 분석 (개인)</span>
+                        <span class="tag tag-tech">Live Ops</span>
+                        <span class="tag tag-tech">QA Checklist</span>
+                    </div>
+
+                    <p class="analysis-lead">출시 3주년(2026.09.24 업데이트)을 맞은 트릭컬 리바이브의 이벤트 구성과 성과를 정리하고, QA 관점에서 대규모 기념 업데이트의 검증 포인트를 도출했습니다.</p>
+
+                    <figure class="analysis-figure">
+                        <img src="https://static.invenglobal.com/upload/image/2026/10/01/r1790815572460043.png" alt="트릭컬 리바이브 3주년 업데이트 이미지" loading="lazy" onerror="this.parentNode.style.display='none'">
+                        <figcaption>3주년 업데이트 대표 이미지 · 출처: 에피드게임즈 / Inven Global</figcaption>
+                    </figure>
+
+                    <div class="analysis-block">
+                        <h4>개요</h4>
+                        <div class="table-wrap">
+                            <table class="analysis-table">
+                                <tr><th>항목</th><th>내용</th></tr>
+                                <tr><td>게임</td><td>트릭컬 리바이브 (에피드게임즈, 수집형 RPG)</td></tr>
+                                <tr><td>출시일</td><td>2023.09.27</td></tr>
+                                <tr><td>3주년 업데이트</td><td>2026.09.24</td></tr>
+                                <tr><td>이벤트 기간</td><td>2026.09.24 ~ 2026.10.22</td></tr>
+                                <tr><td>신규 사도</td><td>엘다인 사도 비비(신성), 우이(기억)</td></tr>
+                                <tr><td>스토리</td><td>시즌 3 피날레</td></tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="analysis-block project-details">
+                        <h4>이벤트 구성</h4>
+                        <ul>
+                            <li>이벤트 기간 동안 최대 <span class="highlight">600회 무료 모집</span></li>
+                            <li>매일 접속 보상: 3주년 기념 프레임, 사도 모집권·호감 모집권</li>
+                            <li>최대 15일 누적 출석: 에르핀(왕도)·네르(분노) 확정 모집권 등</li>
+                            <li>신규·복귀 유저 대상 별도 이벤트</li>
+                        </ul>
+                        <div class="table-wrap">
+                            <table class="analysis-table">
+                                <tr><th>날짜</th><th>게임 밖 일정</th></tr>
+                                <tr><td>09.18</td><td>3주년 특별 방송 (PC 클라이언트·애니메이션·콘서트 발표)</td></tr>
+                                <tr><td>09.24</td><td>3주년 업데이트, 시즌 3 피날레</td></tr>
+                                <tr><td>09.28</td><td>애니메이션 〈트릭컬 만화극장〉 주 1회 방영 시작</td></tr>
+                                <tr><td>10.03 ~ 10.04</td><td>오케스트라 콘서트 (경희대 평화의전당, 4회 공연)</td></tr>
+                                <tr><td>10.22</td><td>이벤트 종료</td></tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="analysis-block">
+                        <h4>성과</h4>
+                        <div class="table-wrap">
+                            <table class="analysis-table">
+                                <tr><th>시점</th><th>국내 구글플레이 매출 순위</th></tr>
+                                <tr><td>09.28</td><td>7위</td></tr>
+                                <tr><td>10.01</td><td>4위</td></tr>
+                                <tr><td>10.02</td><td><span class="highlight">3위</span> (출시 이후 최고)</td></tr>
+                            </table>
+                        </div>
+                        <p class="analysis-lead" style="margin-top: 12px;">같은 날 글로벌 서버도 1주년 업데이트를 진행해, 일본 App Store 매출 3위까지 올랐습니다.</p>
+                        <figure class="analysis-figure">
+                            <img src="https://static.invenglobal.com/upload/image/2026/10/01/r1790815567265696.jpeg" alt="트릭컬 리바이브 3주년 관련 이미지" loading="lazy" onerror="this.parentNode.style.display='none'">
+                            <figcaption>출처: 에피드게임즈 / Inven Global</figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="analysis-block project-details">
+                        <h4>잘된 점</h4>
+                        <ul>
+                            <li><strong>보상을 기간 전체에 나눠 배치</strong>: 600회 모집을 매일 접속·15일 누적 출석으로 나눠, 이벤트 기간 내내 접속할 이유를 만들었습니다.</li>
+                            <li><strong>스토리와 이벤트의 타이밍 일치</strong>: 시즌 3 피날레를 3주년에 맞춰, 보상을 받으러 온 복귀 유저가 스토리까지 이어서 즐기게 했습니다.</li>
+                            <li><strong>게임 밖 화제성의 연쇄</strong>: 특별 방송 → 업데이트 → 애니메이션 → 콘서트가 2주 남짓 안에 이어져 화제가 끊기지 않았고, 매출 순위도 며칠에 걸쳐 올랐습니다.</li>
+                        </ul>
+                    </div>
+
+                    <div class="analysis-block project-details">
+                        <h4>개선 제안</h4>
+                        <ul>
+                            <li>무료 모집이 대량으로 풀리면 이벤트 이후 과금 동기가 약해질 수 있어, 10.22 이후 접속·매출 추이까지 봐야 실제 효과를 판단할 수 있습니다.</li>
+                            <li>오프라인 콘서트는 지방·해외 유저가 소외되기 쉬워, 현장 영상 공개나 인게임 기념 보상으로 참여 범위를 넓힐 수 있습니다.</li>
+                        </ul>
+                    </div>
+
+                    <div class="analysis-block">
+                        <h4>QA 관점 검증 포인트</h4>
+                        <div class="table-wrap">
+                            <table class="analysis-table">
+                                <tr><th>영역</th><th>검증 항목</th></tr>
+                                <tr><td>출석 보상</td><td>일일 리셋 직전·직후 접속 시 중복 지급 또는 누락</td></tr>
+                                <tr><td>누적 출석</td><td>하루 빠진 유저의 누적 일수 계산, 15일 초과 접속 처리</td></tr>
+                                <tr><td>확정 모집권</td><td>이미 보유한 사도를 확정 모집했을 때 중복 처리</td></tr>
+                                <tr><td>대량 모집</td><td>모집권 연속 사용 시 연출·인벤토리·서버 응답 (첫날 접속 피크)</td></tr>
+                                <tr><td>이벤트 종료</td><td>미사용 재화·교환권 처리가 사전 안내와 일치하는지</td></tr>
+                                <tr><td>서버 분기</td><td>같은 날 업데이트한 국내 3주년 / 글로벌 1주년 콘텐츠의 서버별 노출</td></tr>
+                                <tr><td>신규 사도</td><td>비비·우이 스킬 수치와 설명 텍스트 일치</td></tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="analysis-block project-details sources">
+                        <h4>참고 자료</h4>
+                        <ul>
+                            <li><a href="https://www.invenglobal.com/articles/26679/double-celebration-with-anime-release-and-3rd-anniversary-trickcal-revive-ranks-4th-in-google-play-revenue" target="_blank" rel="noopener">Inven Global – 3rd Anniversary &amp; Revenue</a></li>
+                            <li><a href="https://www.invenglobal.com/articles/26539/3rd-1st-anniversary-boost-trickcal-ranks-7th-in-korea-and-3rd-in-japan-on-google-play-revenue" target="_blank" rel="noopener">Inven Global – Season 3 Finale</a></li>
+                            <li><a href="https://www.inews24.com/view/2011286" target="_blank" rel="noopener">아이뉴스24 – 국내 구글 매출 3위</a></li>
+                            <li><a href="https://www.invenglobal.com/articles/26006/trickcal-revive-3rd-anniversary-concert-to-feature-voice-actors-and-cosplayers" target="_blank" rel="noopener">Inven Global – 오케스트라 콘서트</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
     </div>
-  </header>
 
-  <section>
-    <h2>Projects</h2>
+    <script>
+        (function () {
+            var root = document.documentElement;
+            var btn = document.getElementById('theme-toggle');
 
-    <div class="row">
-      <div class="date">2026.03 – 2026.07</div>
-      <div class="body">
-        <h3>QUDRANT</h3>
-        <p class="sub">기능 개발 및 QA · 4인 팀</p>
-        <div class="meta"><span>Unity</span><span>GitHub</span></div>
-        <ul>
-          <li>상점 UI 구현, 재화 결제 시 발생할 수 있는 예외 상황 사전 테스트</li>
-          <li>몬스터 패턴 및 기믹 구현을 통한 전투 시스템 로직 검증</li>
-        </ul>
-      </div>
-    </div>
+            function render() {
+                var dark = root.getAttribute('data-theme') === 'dark';
+                btn.textContent = dark ? '☀️ 라이트 모드' : '🌙 다크 모드';
+                btn.setAttribute('aria-label', dark ? '라이트 모드로 전환' : '다크 모드로 전환');
+            }
 
-    <div class="row">
-      <div class="date">2025.08 – 2025.12</div>
-      <div class="body">
-        <h3>Target Color</h3>
-        <p class="sub">보드게임 · 기획 및 QA</p>
-        <div class="meta"><span>Board Game</span><span>Balancing</span></div>
-        <ul>
-          <li>전략상 유리하게 작용하는 밸런스 붕괴 요소를 찾아 카드·점수 비율을 조정, 모든 플레이어가 공정하게 즐길 수 있도록 개선</li>
-          <li>룰북 리뷰로 규칙의 논리적 오류를 찾고, 변칙 플레이 시나리오(<em>Edge Case</em>) 도출</li>
-        </ul>
-      </div>
-    </div>
+            btn.addEventListener('click', function () {
+                var dark = root.getAttribute('data-theme') === 'dark';
+                if (dark) {
+                    root.removeAttribute('data-theme');
+                } else {
+                    root.setAttribute('data-theme', 'dark');
+                }
+                try { localStorage.setItem('theme', dark ? 'light' : 'dark'); } catch (e) {}
+                render();
+            });
 
-    <div class="row">
-      <div class="date">2025.08 – 2025.12</div>
-      <div class="body">
-        <h3>모바일 음주 측정 앱</h3>
-        <p class="sub">기획 및 UI 개발</p>
-        <div class="meta"><span>Figma</span><span>Usability Test</span></div>
-        <ul>
-          <li>피그마 프로토타입으로 20대 대학생 대상 사용성 테스트 진행 및 피드백 수집</li>
-          <li>주량 입력 → 시간 입력 → 결과 확인 플로우에서 유저가 헷갈려하는 UI 요소 파악</li>
-          <li>화면 전환 단계를 <em>3단계 → 2단계</em>로 줄이는 UX 개선안 도출</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+            render();
+        })();
+    </script>
 
-  <section>
-    <h2>Analysis</h2>
-    <div class="row">
-      <div class="date">2026.10</div>
-      <div class="body">
-        <h3>트릭컬 리바이브 3주년 이벤트 분석</h3>
-        <p class="sub">라이브 서비스 이벤트 분석 · 개인</p>
-        <div class="meta"><span>Live Ops</span><span>QA Checklist</span></div>
-        <p class="lead">출시 3주년(2026.09.24 업데이트)을 맞은 트릭컬 리바이브의 이벤트 구성과 성과를 정리하고, QA 관점에서 대규모 기념 업데이트의 검증 포인트를 도출했습니다.</p>
-
-        <figure>
-          <img src="https://static.invenglobal.com/upload/image/2026/10/01/r1790815572460043.png" alt="트릭컬 리바이브 3주년 업데이트 이미지" loading="lazy" onerror="this.parentNode.hidden=true">
-          <figcaption>3주년 업데이트 대표 이미지 · 출처: 에피드게임즈 / Inven Global</figcaption>
-        </figure>
-
-        <h4>개요</h4>
-        <div class="table"><table>
-          <tr><th>항목</th><th>내용</th></tr>
-          <tr><td>게임</td><td>트릭컬 리바이브 (에피드게임즈, 수집형 RPG)</td></tr>
-          <tr><td>출시일</td><td class="num">2023.09.27</td></tr>
-          <tr><td>3주년 업데이트</td><td class="num">2026.09.24</td></tr>
-          <tr><td>이벤트 기간</td><td class="num">2026.09.24 – 10.22</td></tr>
-          <tr><td>신규 사도</td><td>엘다인 사도 비비(신성), 우이(기억)</td></tr>
-          <tr><td>스토리</td><td>시즌 3 피날레</td></tr>
-        </table></div>
-
-        <h4>이벤트 구성</h4>
-        <ul>
-          <li>이벤트 기간 동안 최대 600회 무료 모집</li>
-          <li>매일 접속 보상: 3주년 기념 프레임, 사도 모집권·호감 모집권</li>
-          <li>최대 15일 누적 출석: 에르핀(왕도)·네르(분노) 확정 모집권 등</li>
-          <li>신규·복귀 유저 대상 별도 이벤트</li>
-        </ul>
-        <div class="table"><table>
-          <tr><th>날짜</th><th>게임 밖 일정</th></tr>
-          <tr><td class="num">09.18</td><td>3주년 특별 방송 (PC 클라이언트·애니메이션·콘서트 발표)</td></tr>
-          <tr><td class="num">09.24</td><td>3주년 업데이트, 시즌 3 피날레</td></tr>
-          <tr><td class="num">09.28</td><td>애니메이션 〈트릭컬 만화극장〉 주 1회 방영 시작</td></tr>
-          <tr><td class="num">10.03 – 10.04</td><td>오케스트라 콘서트 (경희대 평화의전당, 4회 공연)</td></tr>
-          <tr><td class="num">10.22</td><td>이벤트 종료</td></tr>
-        </table></div>
-
-        <h4>성과</h4>
-        <div class="table"><table>
-          <tr><th>시점</th><th>국내 구글플레이 매출 순위</th></tr>
-          <tr><td class="num">09.28</td><td class="num">7위</td></tr>
-          <tr><td class="num">10.01</td><td class="num">4위</td></tr>
-          <tr><td class="num">10.02</td><td class="num"><em>3위</em> · 출시 이후 최고</td></tr>
-        </table></div>
-        <p class="lead">같은 날 글로벌 서버도 1주년 업데이트를 진행해, 일본 App Store 매출 3위까지 올랐습니다.</p>
-        <figure>
-          <img src="https://static.invenglobal.com/upload/image/2026/10/01/r1790815567265696.jpeg" alt="트릭컬 리바이브 3주년 관련 이미지" loading="lazy" onerror="this.parentNode.hidden=true">
-          <figcaption>출처: 에피드게임즈 / Inven Global</figcaption>
-        </figure>
-
-        <h4>잘된 점</h4>
-        <ul>
-          <li><strong>보상을 기간 전체에 나눠 배치</strong>: 600회 모집을 매일 접속·15일 누적 출석으로 나눠, 이벤트 기간 내내 접속할 이유를 만들었습니다.</li>
-          <li><strong>스토리와 이벤트의 타이밍 일치</strong>: 시즌 3 피날레를 3주년에 맞춰, 보상을 받으러 온 복귀 유저가 스토리까지 이어서 즐기게 했습니다.</li>
-          <li><strong>게임 밖 화제성의 연쇄</strong>: 특별 방송 → 업데이트 → 애니메이션 → 콘서트가 2주 남짓 안에 이어져 화제가 끊기지 않았고, 매출 순위도 며칠에 걸쳐 올랐습니다.</li>
-        </ul>
-
-        <h4>개선 제안</h4>
-        <ul>
-          <li>무료 모집이 대량으로 풀리면 이벤트 이후 과금 동기가 약해질 수 있어, 10.22 이후 접속·매출 추이까지 봐야 실제 효과를 판단할 수 있습니다.</li>
-          <li>오프라인 콘서트는 지방·해외 유저가 소외되기 쉬워, 현장 영상 공개나 인게임 기념 보상으로 참여 범위를 넓힐 수 있습니다.</li>
-        </ul>
-
-        <h4>QA 관점 검증 포인트</h4>
-        <div class="table"><table>
-          <tr><th>영역</th><th>검증 항목</th></tr>
-          <tr><td>출석 보상</td><td>일일 리셋 직전·직후 접속 시 중복 지급 또는 누락</td></tr>
-          <tr><td>누적 출석</td><td>하루 빠진 유저의 누적 일수 계산, 15일 초과 접속 처리</td></tr>
-          <tr><td>확정 모집권</td><td>이미 보유한 사도를 확정 모집했을 때 중복 처리</td></tr>
-          <tr><td>대량 모집</td><td>모집권 연속 사용 시 연출·인벤토리·서버 응답 (첫날 접속 피크)</td></tr>
-          <tr><td>이벤트 종료</td><td>미사용 재화·교환권 처리가 사전 안내와 일치하는지</td></tr>
-          <tr><td>서버 분기</td><td>같은 날 업데이트한 국내 3주년 / 글로벌 1주년 콘텐츠의 서버별 노출</td></tr>
-          <tr><td>신규 사도</td><td>비비·우이 스킬 수치와 설명 텍스트 일치</td></tr>
-        </table></div>
-
-        <h4>참고 자료</h4>
-        <ul class="sources">
-          <li><a href="https://www.invenglobal.com/articles/26679/double-celebration-with-anime-release-and-3rd-anniversary-trickcal-revive-ranks-4th-in-google-play-revenue" target="_blank" rel="noopener">Inven Global – 3rd Anniversary &amp; Revenue</a></li>
-          <li><a href="https://www.invenglobal.com/articles/26539/3rd-1st-anniversary-boost-trickcal-ranks-7th-in-korea-and-3rd-in-japan-on-google-play-revenue" target="_blank" rel="noopener">Inven Global – Season 3 Finale</a></li>
-          <li><a href="https://www.inews24.com/view/2011286" target="_blank" rel="noopener">아이뉴스24 – 국내 구글 매출 3위</a></li>
-          <li><a href="https://www.invenglobal.com/articles/26006/trickcal-revive-3rd-anniversary-concert-to-feature-voice-actors-and-cosplayers" target="_blank" rel="noopener">Inven Global – 오케스트라 콘서트</a></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Education</h2>
-    <div class="row">
-      <div class="date">2022.03 – 2027.03</div>
-      <div class="body">
-        <h3>유한대학교</h3>
-        <p class="sub">게임콘텐츠학과</p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Experience</h2>
-    <div class="row">
-      <div class="date">—</div>
-      <div class="body">
-        <p class="note">첫 커리어를 준비하고 있습니다.</p>
-      </div>
-    </div>
-  </section>
-
-  <footer>© 2026 이태현</footer>
-</div>
-
-<script>
-  document.getElementById('copy-email').addEventListener('click', function () {
-    var btn = this, text = document.getElementById('email').textContent;
-    function done() { btn.textContent = '복사됨'; setTimeout(function () { btn.textContent = '복사'; }, 1500); }
-    function fallback() {
-      var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
-      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done, fallback);
-    } else { fallback(); }
-  });
-</script>
 </body>
 </html>
