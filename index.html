@@ -469,6 +469,97 @@
         .stars { color: var(--highlight); letter-spacing: 1px; white-space: nowrap; }
         .stars .off { color: var(--border-strong); }
 
+        /* 미디어 슬라이드 (옆으로 넘기기) */
+        .media { margin-top: 20px; }
+
+        .media-frame {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #0b0f17;
+            aspect-ratio: 16 / 9;
+            max-width: 100%;
+        }
+
+        .media-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.35s ease;
+        }
+
+        .media-slide {
+            flex: 0 0 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .media-slide video,
+        .media-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            image-rendering: pixelated;
+        }
+
+        .media-caption {
+            position: absolute;
+            left: 12px;
+            bottom: 10px;
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.55);
+        }
+
+        .media-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.7);
+            color: #ffffff;
+            font-size: 1.2rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .media-btn:hover { background: rgba(15, 23, 42, 0.9); }
+        .media-btn.prev { left: 10px; }
+        .media-btn.next { right: 10px; }
+
+        .media-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .media-dot {
+            width: 8px;
+            height: 8px;
+            padding: 0;
+            border: 0;
+            border-radius: 50%;
+            background: var(--border-strong);
+            cursor: pointer;
+        }
+
+        .media-dot.on { background: var(--accent); }
+
+        .media-count {
+            margin-left: 6px;
+            font-variant-numeric: tabular-nums;
+        }
+
         /* 학력·경력 */
         .timeline { display: grid; gap: 0; }
 
@@ -735,10 +826,34 @@
                         <span class="status done"><span class="dot done"></span>개발 완료</span>
                     </div>
                     <h3>COREDUN</h3>
-                    <p class="summary">게임 기획과 밸런싱을 중심으로 참여한 게임 개발 프로젝트입니다.</p>
+                    <p class="summary">벽 타기, 턱 오르기 같은 파쿠르 액션으로 지형을 넘고 적을 제압하는 2D 액션 플랫포머입니다. 세로 스크롤과 횡스크롤이 결합된 맵을 이동합니다.</p>
+
+                    <div class="media" data-media>
+                        <div class="media-frame">
+                            <div class="media-track">
+                                <div class="media-slide">
+                                    <video src="coredun-attack.mp4" muted loop playsinline preload="auto" aria-label="공격 시스템 플레이 영상"></video>
+                                    <span class="media-caption">공격 시스템 · 공격 / 더미 처치</span>
+                                </div>
+                                <div class="media-slide">
+                                    <video src="coredun-parkour.mp4" muted loop playsinline preload="none" aria-label="파쿠르 액션 플레이 영상"></video>
+                                    <span class="media-caption">파쿠르 액션 · 2단 점프 / 벽 점프</span>
+                                </div>
+                                <div class="media-slide">
+                                    <video src="coredun-gameplay.mp4" muted loop playsinline preload="none" aria-label="최종 게임 플레이 영상"></video>
+                                    <span class="media-caption">최종 게임 플레이</span>
+                                </div>
+                            </div>
+                            <button class="media-btn prev" type="button" aria-label="이전 화면">&#8249;</button>
+                            <button class="media-btn next" type="button" aria-label="다음 화면">&#8250;</button>
+                        </div>
+                        <div class="media-nav"></div>
+                    </div>
 
                     <dl class="facts">
                         <div><dt>역할</dt><dd>기획, 밸런싱</dd></div>
+                        <div><dt>팀</dt><dd>4인</dd></div>
+                        <div><dt>사용 기술</dt><dd>Unity</dd></div>
                     </dl>
 
                     <p class="label">주요 작업</p>
@@ -983,6 +1098,59 @@
         window.addEventListener('scroll', update, { passive: true });
         update();
     })();
+    // 미디어 슬라이드: 옆으로 넘기기, 보이는 영상만 재생
+    document.querySelectorAll('[data-media]').forEach(function (box) {
+        var track = box.querySelector('.media-track');
+        var slides = box.querySelectorAll('.media-slide');
+        var nav = box.querySelector('.media-nav');
+        var index = 0;
+        var dots = [];
+
+        slides.forEach(function (_, n) {
+            var dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'media-dot';
+            dot.setAttribute('aria-label', (n + 1) + '번째 화면');
+            dot.addEventListener('click', function () { go(n); });
+            nav.appendChild(dot);
+            dots.push(dot);
+        });
+
+        var count = document.createElement('span');
+        count.className = 'media-count';
+        nav.appendChild(count);
+
+        function go(n) {
+            index = (n + slides.length) % slides.length;
+            track.style.transform = 'translateX(' + (-100 * index) + '%)';
+            dots.forEach(function (d, k) { d.classList.toggle('on', k === index); });
+            count.textContent = (index + 1) + ' / ' + slides.length;
+            slides.forEach(function (s, k) {
+                var v = s.querySelector('video');
+                if (!v) { return; }
+                if (k === index) {
+                    var p = v.play();
+                    if (p && p.catch) { p.catch(function () {}); }
+                } else {
+                    v.pause();
+                }
+            });
+        }
+
+        box.querySelector('.prev').addEventListener('click', function () { go(index - 1); });
+        box.querySelector('.next').addEventListener('click', function () { go(index + 1); });
+
+        var startX = null;
+        track.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+        track.addEventListener('touchend', function (e) {
+            if (startX === null) { return; }
+            var dx = e.changedTouches[0].clientX - startX;
+            if (Math.abs(dx) > 40) { go(dx < 0 ? index + 1 : index - 1); }
+            startX = null;
+        });
+
+        go(0);
+    });
 </script>
 
 </body>
